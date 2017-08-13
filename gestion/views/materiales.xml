@@ -1,0 +1,45 @@
+<?xml version="1.0"?> 
+
+<odoo>
+
+    <record id="view_form_material_de_trabajo" model="ir.ui.view">
+      <field name="name">materiales escolares</field>
+      <field name="model">material.especial</field>
+      <field name="arch" type="xml">
+        <form string="Ven compra y lleve buenos materiales para su hogar">
+          <sheet>
+          	<field name="foto" widget="image" class="oe_avatar"/>
+            <group>
+                <field name="name"/>
+                <field name="cantidad"/>
+                <field name="precio"/>
+                <field name="fecha_hora"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  <record id="view_tree_material" model="ir.ui.view"> 
+    <field name="name">lista de materiales</field> 
+    <field name="model">material.especial</field> 
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="cantidad"/>
+        <field name="precio"/> 
+        <field name="fecha_hora"/> 
+      </tree>
+    </field> 
+  </record> 
+
+	<act_window 
+    id="action_clientes_material_especial" 
+    name="Lista De Materiales" 
+    res_model="material.especial" 
+    view_mode="tree,form"
+    />
+  
+  <menuitem id="menu_base_material_especiales" name="Materiales" action="action_clientes_material_especial" parent="menu_base_tienda_producto"/>  
+
+</odoo>

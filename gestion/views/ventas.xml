@@ -1,0 +1,45 @@
+<?xml version="1.0"?> 
+
+<odoo>
+
+    <record id="view_form_venta_1" model="ir.ui.view">
+      <field name="name">lista de compras</field>
+      <field name="model">compra.ventas</field>
+      <field name="arch" type="xml">
+        <form string="les damos las viembenida a la tienda">
+          <sheet>
+          	<field name="foto" widget="image" class="oe_avatar"/>
+            <group>
+                <field name="name"/>
+                <field name="cantidad"/>
+                <field name="precio"/>
+                <field name="fecha_hora"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  <record id="view_tree_venta_2" model="ir.ui.view"> 
+    <field name="name">listas de carro</field> 
+    <field name="model">compra.ventas</field> 
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="cantidad"/>
+        <field name="precio"/> 
+        <field name="fecha_hora"/> 
+      </tree>
+    </field> 
+  </record> 
+
+	<act_window 
+    id="action_clientes_de_ventas" 
+    name="Usuarios de vestas" 
+    res_model="compra.ventas" 
+    view_mode="tree,form"
+    />
+  
+  <menuitem id="menu_base_compra" name="Ventas" action="action_clientes_de_ventas" parent="menu_base_tienda_producto"/>  
+
+</odoo>

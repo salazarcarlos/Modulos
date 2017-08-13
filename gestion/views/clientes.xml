@@ -1,0 +1,45 @@
+<?xml version="1.0"?> 
+
+<odoo>
+
+    <record id="view_form_cliente_1" model="ir.ui.view">
+      <field name="name">lista de CLIENTES</field>
+      <field name="model">cliente.cliente</field>
+      <field name="arch" type="xml">
+        <form string="les damos las viembenida a la tienda">
+          <sheet>
+          	<field name="foto" widget="image" class="oe_avatar"/>
+            <group>
+                <field name="name"/>
+                <field name="proveedor"/>
+                <field name="precio"/>
+                <field name="fecha_hora"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  <record id="view_tree_cliente_2" model="ir.ui.view"> 
+    <field name="name">listas de los cliente</field> 
+    <field name="model">cliente.cliente</field> 
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="proveedor"/>
+        <field name="precio"/> 
+        <field name="fecha_hora"/> 
+      </tree>
+    </field> 
+  </record> 
+
+	<act_window 
+    id="action_clientes_productos" 
+    name="Lista de los clientes" 
+    res_model="cliente.cliente" 
+    view_mode="tree,form"
+    />
+  
+  <menuitem id="menu_base_cliente" name="Clientes" action="action_clientes_productos" parent="menu_base_tienda_producto"/>  
+
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0"?> 
+
+<odoo>
+  <!-- vista formulario -->
+  <record id="view_form_catalogo" model="ir.ui.view">
+      <field name="name">listas de catalogos</field>
+      <field name="model">producto.catalogo</field>
+      <field name="arch" type="xml">
+        <form string="catalogo de productos">
+          <sheet>
+            <group>
+                <field name="name"/>
+                <field name="precio"/>
+                <field name="cantidad"/>
+                <field name="fecha"/>
+                <field name="categoria"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  <!-- vista Lista or arbol -->
+  <record id="view_tree_catalogo" model="ir.ui.view"> 
+    <field name="name">listas de catalogos</field> 
+    <field name="model">producto.catalogo</field> 
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="precio"/>
+        <field name="cantidad"/>
+        <field name="fecha"/> 
+        <field name="categoria"/>
+      </tree>
+    </field> 
+  </record> 
+
+  <!-- Accion que llama primero a la vista lista(tree) -->
+  <act_window 
+    id="action_catalogo_de_productos" 
+    name="Lista de catalogo de productos" 
+    res_model="producto.catalogo" 
+    view_mode="tree,form"
+    />
+
+    <!-- Menu que llama a la action a travez de la etiqueta o  propiedad action -->
+  <menuitem id="catalogo_de_productos" name="Catalogos" action="action_catalogo_de_productos" parent="menu_base_tienda_producto"/> 
+
+</odoo>  

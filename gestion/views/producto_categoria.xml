@@ -1,0 +1,56 @@
+<?xml version="1.0"?> 
+
+<odoo>
+
+    <record id="view_form_categoria" model="ir.ui.view">
+      <field name="name">listas de los categorias</field>
+      <field name="model">producto.categoria</field>
+      <field name="arch" type="xml">
+        <form string="categoria">
+          <header> 
+            <button name="do_toggle_done" type="object" string="Deseo Pagar por efectivo" class="oe_highlight" attrs="{'invisible': [('is_done','=',(True))]}" /> 
+            <button name="do_clear_done" type="object" string="No Deseo Pagar por efectivo"  attrs="{'invisible': [('is_done','=',(False))]}" /> 
+
+            <button name="pago_visa" type="object" string="Deseo Pagar por Visa" class="oe_highlight" attrs="{'invisible': [('visa','=',(True))]}"/> 
+            <button name="no_pago_visa" type="object" string="No Deseo Pagar por Visa" attrs="{'invisible': [('visa','=',(False))]}" />
+          </header> 
+          <sheet>
+            <group>
+                <field name="name"/>
+                <field name="cantidad"/>
+                <field name="precio"/>
+                <field name="fecha"/>  
+                <field name="is_done"/>
+                <field name="visa"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  <record id="view_tree_categoria" model="ir.ui.view"> 
+    <field name="name">listas de categorias</field> 
+    <field name="model">producto.categoria</field> 
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="cantidad"/>
+        <field name="precio"/> 
+      </tree>
+    </field> 
+  </record> 
+
+
+
+  <act_window 
+    id="action_mostrar_categoria" 
+    name="Gestion de productos" 
+    res_model="producto.categoria" 
+    view_mode="tree,form"
+    />
+  
+  <menuitem id="menu_base_tienda" name="Gestion de Tienda"/>
+    <menuitem id="menu_base_tienda_producto" name="Lista de categorias" parent="menu_base_tienda"/> 
+    <menuitem id="menu_base_categoria" name="Productos" action="action_mostrar_categoria" parent="menu_base_tienda_producto"/> 
+
+</odoo>
